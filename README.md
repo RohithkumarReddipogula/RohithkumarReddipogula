@@ -2,7 +2,7 @@
 
 Applied AI Engineer | RAG • LLMs • AI Agents • Document Intelligence | Berlin, Germany
 
-I build production AI systems end to end — from research and fine-tuning to deployment and monitoring. Since graduating with my MSc in Data Science, I have shipped nine independent AI systems, all live and public.
+I build production AI systems end to end - from research and fine-tuning to deployment and monitoring. Since graduating with my MSc in Data Science, I have shipped nine independent AI systems, all live and public.
 
 ---
 
