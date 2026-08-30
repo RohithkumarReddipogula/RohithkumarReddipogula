@@ -2,7 +2,7 @@
 
 **AI Engineer | RAG · LLMs · AI Agents · Geospatial AI | Berlin, Germany**
 
-I build production AI systems end to end — from research and fine-tuning to deployment and monitoring. Since graduating with my MSc in Data Science, I have shipped ten independent AI systems, all live and public.
+I build production AI systems end to end - from research and fine-tuning to deployment and monitoring. Since graduating with my MSc in Data Science, I have shipped ten independent AI systems, all live and public.
 
 ---
 
