@@ -11,7 +11,7 @@
 <img src="https://img.shields.io/badge/MSc-Data%20Science-4F46E5?style=flat-square&labelColor=1E1B4B"/>
 <img src="https://img.shields.io/badge/B.Tech-Computer%20Science-6366F1?style=flat-square&labelColor=1E1B4B"/>
 <img src="https://img.shields.io/badge/Location-Berlin%2C%20Germany-8B5CF6?style=flat-square&labelColor=1E1B4B"/>
-<img src="https://img.shields.io/badge/German%20Work%20Authorization-No%20Sponsorship%20Needed-7C3AED?style=flat-square&labelColor=1E1B4B"/>
+<img src="https://img.shields.io/badge/Job%20Seeker%20Visa-No%20Employer%20Sponsorship%20Needed-7C3AED?style=flat-square&labelColor=1E1B4B"/>
 
 <br/><br/>
 
@@ -111,7 +111,7 @@ A GraphRAG system on Neo4j, benchmarked against a strong hybrid retrieval baseli
 |:---|:---|
 | **Stack** | Python, Neo4j, E5, BM25, cross-encoder reranker, gpt-oss-120b, Docker |
 | **Scale** | 2,049 documents, 12,547 extracted relations, 500 questions in dev and test splits |
-| **Performance** | Retrieval +20 points exact match over the model's memory (95% CI 9 to 31); extraction recall 0.75, precision 0.89 |
+| **Performance** | Retrieval +20 points exact match over the model's memory (95% CI 9 to 31); extraction recall 0.75, slot precision 0.89 (strict, 247 dev triples) |
 | **Reliability** | Quality bars fixed before results, hand checks, pinned providers, every LLM call cached and logged with cost |
 | **Impact** | Showed that hybrid retrieval never finds the bridge entities that multi-hop questions need, which is what the graph is built to fix |
 | **Repository** | [graphrag-engine](https://github.com/RohithkumarReddipogula/graphrag-engine) |
