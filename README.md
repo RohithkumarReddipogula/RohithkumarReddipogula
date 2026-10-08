@@ -236,7 +236,7 @@ Building and shipping production-style AI systems end to end, with a focus on re
 
 <br/>
 
-**Graduate Researcher, Retrieval and LLM Systems** &nbsp;|&nbsp; University of Europe for Applied Sciences, Potsdam
+**MSc Thesis, Retrieval and LLM Systems** &nbsp;|&nbsp; University of Europe for Applied Sciences, Potsdam
 <br/><sub>March 2024 - March 2026</sub>
 
 MSc thesis: AI-Powered Retrieval-Augmented Assistant for Evidence-Based Question Answering.
