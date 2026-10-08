@@ -75,7 +75,6 @@ I work like a product engineer: understand the problem first, ship the simple ve
 <img src="https://img.shields.io/badge/pgvector-1E1B4B?style=flat-square&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/FAISS-1E1B4B?style=flat-square&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/HuggingFace-1E1B4B?style=flat-square&logo=huggingface&logoColor=A78BFA"/>
-<img src="https://img.shields.io/badge/MLflow-1E1B4B?style=flat-square&logo=mlflow&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/RAGAS-1E1B4B?style=flat-square&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/n8n-1E1B4B?style=flat-square&logo=n8n&logoColor=A78BFA"/>
 <img src="https://img.shields.io/badge/Prometheus-1E1B4B?style=flat-square&logo=prometheus&logoColor=A78BFA"/>
@@ -95,7 +94,7 @@ I work like a product engineer: understand the problem first, ship the simple ve
 | LLM Engineering | ![](https://img.shields.io/badge/-Strong-6366F1?style=flat-square) | Structured JSON output, prompt versioning, provider pinning, caching, cost tracking, guardrails |
 | Knowledge Graphs | ![](https://img.shields.io/badge/-Strong-6366F1?style=flat-square) | LLM entity and relation extraction, entity resolution, Neo4j |
 | Fine-Tuning | ![](https://img.shields.io/badge/-Working-8B5CF6?style=flat-square) | QLoRA on TinyLlama 1.1B, HuggingFace PEFT |
-| MLOps & Deployment | ![](https://img.shields.io/badge/-Working-8B5CF6?style=flat-square) | Docker, Kubernetes, AWS EC2, MLflow experiment tracking, CI/CD, Prometheus |
+| MLOps & Deployment | ![](https://img.shields.io/badge/-Working-8B5CF6?style=flat-square) | Docker, Kubernetes, AWS EC2, CI/CD, Prometheus |
 
 ---
 
@@ -148,10 +147,10 @@ Idempotent deduplication by Message-ID and content hash, a review queue for appr
 
 | | |
 |:---|:---|
-| **Stack** | Python, FAISS, BM25, E5, FastAPI, Docker, Kubernetes, AWS EC2, MLflow |
+| **Stack** | Python, FAISS, BM25, E5, FastAPI, Docker, Kubernetes, AWS EC2 |
 | **Scale** | 8.84M MS MARCO passages |
-| **Performance** | 93% Recall@10, 11.4% above baseline (p = 0.002), optimal fusion weight alpha 0.70 |
-| **Evaluation** | RAGAS Faithfulness 0.909, 11 tracked MLflow experiments |
+| **Performance** | 93% Recall@10 at fusion weight alpha 0.70: +2.9 pts over alpha 0.5 (p = 0.002, 95% CI +1.1 to +4.7), +11.4 pts over BM25 only |
+| **Evaluation** | 11 alpha experiments on 100 stratified dev queries, paired t-test |
 | **Impact** | Live demo and API, deployed with 2 Kubernetes replicas |
 | **Repository** | [AI-Powered-Rag-System](https://github.com/RohithkumarReddipogula/AI-Powered-Rag-System) &nbsp;|&nbsp; [Live demo](https://rohith2026-hybrid-rag-demo.hf.space) |
 
@@ -214,7 +213,7 @@ The same repository includes a 4-agent LangGraph research pipeline ([live](https
 | | |
 |:---|:---|
 | **Stack** | PyTorch, HuggingFace, PEFT, QLoRA, Gradio |
-| **Performance** | TinyLlama 1.1B training loss 2.47 to 0.89 (64% reduction), 0.089% of parameters trained |
+| **Performance** | TinyLlama 1.1B training loss 2.47 to 0.89 (64% reduction), 0.089% of parameters trained. RAGAS dashboard: Faithfulness 0.909 on 10 test questions |
 | **Repository** | [Model](https://huggingface.co/Rohith2026/nlp-rag-expert) &nbsp;|&nbsp; [Evaluation dashboard](https://huggingface.co/spaces/ROHITHKUMARREDDIOGULa/llm-evaluation-dashboard) &nbsp;|&nbsp; [GitHub](https://github.com/RohithkumarReddipogula/llm-evaluation-project) |
 
 </details>
@@ -242,10 +241,10 @@ Building and shipping production-style AI systems end to end, with a focus on re
 
 MSc thesis: AI-Powered Retrieval-Augmented Assistant for Evidence-Based Question Answering.
 
-- Hybrid retrieval over 8.84M passages reaching 93% Recall@10 across 11 tracked experiments
+- Hybrid retrieval over 8.84M passages reaching 93% Recall@10; alpha 0.70 beat alpha 0.5 by 2.9 pts (p = 0.002) and BM25 only by 11.4 pts
 - RAGAS evaluation pipeline, QLoRA fine-tuning and deployment on AWS EC2 and Kubernetes
 
-<img src="https://img.shields.io/badge/Information%20Retrieval-1E1B4B?style=flat-square"/> <img src="https://img.shields.io/badge/MLflow-1E1B4B?style=flat-square"/> <img src="https://img.shields.io/badge/Kubernetes-1E1B4B?style=flat-square"/> <img src="https://img.shields.io/badge/AWS-1E1B4B?style=flat-square"/>
+<img src="https://img.shields.io/badge/Information%20Retrieval-1E1B4B?style=flat-square"/> <img src="https://img.shields.io/badge/Kubernetes-1E1B4B?style=flat-square"/> <img src="https://img.shields.io/badge/AWS-1E1B4B?style=flat-square"/>
 
 ---
 
@@ -255,10 +254,10 @@ MSc thesis: AI-Powered Retrieval-Augmented Assistant for Evidence-Based Question
 
 | Result | Details |
 |:---:|:---|
-| **93% Recall@10** | Hybrid retrieval on 8.84M MS MARCO passages, p = 0.002 |
+| **93% Recall@10** | Hybrid retrieval on 8.84M MS MARCO passages, +2.9 pts over alpha 0.5 (p = 0.002) |
 | **+20 points EM** | Retrieval over model memory in GraphRAG Engine, 95% CI 9 to 31 |
 | **12,547 relations** | Extracted from 2,049 documents for 0.35 USD |
-| **Faithfulness 0.909** | RAGAS evaluation of the thesis RAG system |
+| **175 tests** | LLM email intake service with guardrails and human review |
 | **3,197 roadworks** | Tracked live across Germany in BauWächter |
 | **7 days** | Multi-tenant AI SaaS from idea to production |
 
