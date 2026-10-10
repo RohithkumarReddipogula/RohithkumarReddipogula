@@ -3,7 +3,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1E1B4B,50:4F46E5,100:8B5CF6&height=220&section=header&text=Rohith%20Kumar%20Reddipogula&fontSize=44&fontColor=EDE9FE&fontAlignY=36&desc=AI%20Engineer%20%7C%20RAG%20%C2%B7%20LLMs%20%C2%B7%20AI%20Agents%20%C2%B7%20Knowledge%20Graphs&descSize=17&descAlignY=58&animation=fadeIn" width="100%"/>
 
 <a href="https://github.com/RohithkumarReddipogula">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=3200&pause=900&color=A78BFA&center=true&vCenter=true&width=720&lines=Building+production+AI+systems+end+to+end;RAG+%7C+GraphRAG+%7C+LLM+Agents+%7C+Evaluation;Currently+building+a+GraphRAG+engine+on+Neo4j;Measure+honestly.+Ship+the+simple+version+first." alt="Typing SVG"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=3200&pause=900&color=A78BFA&center=true&vCenter=true&width=720&lines=Building+production+AI+systems+end+to+end;RAG+%7C+GraphRAG+%7C+LLM+Agents+%7C+Evaluation;GraphRAG%3A+0.57+to+0.79+exact+match+on+held-out+test;Measure+honestly.+Ship+the+simple+version+first." alt="Typing SVG"/>
 </a>
 
 <br/>
@@ -35,7 +35,7 @@
 
 I build production AI systems end to end: retrieval, LLM applications, AI agents and the data pipelines and evaluation underneath them. I care most about the parts that decide whether an AI feature can be trusted in production: honest evaluation, quality bars fixed before results are seen, human review for risky decisions, guardrails, cost tracking per call and reproducible runs.
 
-Since my MSc in Data Science I have shipped independent AI systems that are live and public, from a hybrid RAG system over 8.84M passages to a multi-tenant AI support SaaS built in seven days, and I am now building a GraphRAG engine on Neo4j that I benchmark against my own thesis retriever.
+Since my MSc in Data Science I have shipped independent AI systems that are live and public, from a hybrid RAG system over 8.84M passages to a multi-tenant AI support SaaS built in seven days, and a GraphRAG engine on Neo4j that I benchmarked against a strong hybrid retriever with a pre-registered, run-once test.
 
 I work like a product engineer: understand the problem first, ship the simple version, measure it, then harden what production exposes.
 
@@ -101,7 +101,7 @@ I work like a product engineer: understand the problem first, ship the simple ve
 ## Featured Projects
 
 <details open>
-<summary><b>GraphRAG Engine</b> &nbsp;|&nbsp; Knowledge graph retrieval, benchmarked honestly (in progress)</summary>
+<summary><b>GraphRAG Engine</b> &nbsp;|&nbsp; Knowledge graph retrieval, benchmarked honestly</summary>
 
 <br/>
 
@@ -111,12 +111,13 @@ A GraphRAG system on Neo4j, benchmarked against a strong hybrid retrieval baseli
 |:---|:---|
 | **Stack** | Python, Neo4j, E5, BM25, cross-encoder reranker, gpt-oss-120b, Docker |
 | **Scale** | 2,049 documents, 12,547 extracted relations, 500 questions in dev and test splits |
-| **Performance** | Retrieval +20 points exact match over the model's memory (95% CI 9 to 31); extraction recall 0.75, slot precision 0.89 (strict, 247 dev triples) |
+| **Performance** | On 375 held-out test questions, exact match 0.57 (hybrid RAG) to 0.79 (GraphRAG): +0.22 (95% CI +0.17 to +0.27). Hypothesis pre-registered, test split run once |
+| **Quality** | Extraction recall 0.75, slot precision 0.89 (strict, 247 dev triples); entity resolution 49 of 50 hand-checked merges correct; LLM judge agrees with hand check on 29 of 30 |
 | **Reliability** | Quality bars fixed before results, hand checks, pinned providers, every LLM call cached and logged with cost |
-| **Impact** | Showed that hybrid retrieval never finds the bridge entities that multi-hop questions need, which is what the graph is built to fix |
+| **Impact** | Largest gain where hybrid retrieval struggles: bridge-comparison questions went from 0.07 to 0.81 exact match on test. Full report in BENCHMARK.md |
 | **Repository** | [graphrag-engine](https://github.com/RohithkumarReddipogula/graphrag-engine) |
 
-Extraction uses strict JSON schema output and deterministic post-processing. Entity resolution keeps same-name entities apart by design and records why every merge happened. The full extraction cost 0.35 USD.
+Extraction uses strict JSON schema output and deterministic post-processing. Entity resolution keeps same-name entities apart by design and records why every merge happened. The full extraction cost 0.35 USD, and every LLM call in the project went through OpenRouter for 1.82 USD in total.
 
 </details>
 
@@ -227,7 +228,7 @@ The same repository includes a 4-agent LangGraph research pipeline ([live](https
 
 Building and shipping production-style AI systems end to end, with a focus on retrieval, agents, reliable LLM pipelines and honest evaluation.
 
-- Built a GraphRAG engine on Neo4j with LLM extraction, entity resolution and a benchmark against a hybrid baseline
+- Built a GraphRAG engine on Neo4j that raised exact match from 0.57 to 0.79 over a hybrid RAG baseline on 375 held-out test questions (pre-registered, run once, 1.82 USD total LLM cost)
 - Built an LLM email intake service with a job queue, retries, guardrails, a human review queue and 175 tests
 - Shipped a multi-tenant AI SaaS in 7 days with auth, streaming, CI tests and monitoring
 - Released open-source tooling that gives AI agents clean, typed data
@@ -255,7 +256,7 @@ MSc thesis: AI-Powered Retrieval-Augmented Assistant for Evidence-Based Question
 | Result | Details |
 |:---:|:---|
 | **93% Recall@10** | Hybrid retrieval on 8.84M MS MARCO passages, +2.9 pts over alpha 0.5 (p = 0.002) |
-| **+20 points EM** | Retrieval over model memory in GraphRAG Engine, 95% CI 9 to 31 |
+| **+22 points EM** | GraphRAG vs hybrid RAG on 375 held-out test questions, 95% CI +17 to +27 |
 | **12,547 relations** | Extracted from 2,049 documents for 0.35 USD |
 | **175 tests** | LLM email intake service with guardrails and human review |
 | **3,197 roadworks** | Tracked live across Germany in BauWächter |
@@ -274,7 +275,7 @@ learning:
   - Azure AI and responsible AI governance
 
 building:
-  - GraphRAG Engine: entity resolution and graph retrieval
+  - Applying the GraphRAG benchmark method to agent evaluation
   - A governed AI agent with tool access rules and audit logging
 
 exploring:
